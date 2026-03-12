@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+</head>
+
+<body>
+
+<h1>Login</h1>
+
+<input id="email" placeholder="Email"><br><br>
+
+<input id="password" type="password" placeholder="Password"><br><br>
+
+<button onclick="login()">Login</button>
+
+<script>
+
+function login(){
+
+let email=document.getElementById("email").value;
+let pass=document.getElementById("password").value;
+
+let savedEmail=localStorage.getItem("userEmail");
+let savedPass=localStorage.getItem("userPass");
+
+if(email===savedEmail && pass===savedPass){
+
+alert("Login successful");
+window.location="dashboard.html";
+
+}else{
+
+alert("Wrong login");
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
