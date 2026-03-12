@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Signup</title>
+<title>Signup - KitjuuHost</title>
 </head>
 
 <body>
@@ -14,6 +14,8 @@
 
 <button onclick="signup()">Signup</button>
 
+<p id="msg"></p>
+
 <script>
 
 function signup(){
@@ -21,12 +23,26 @@ function signup(){
 let email=document.getElementById("email").value;
 let pass=document.getElementById("password").value;
 
+if(email==="" || pass===""){
+document.getElementById("msg").innerText="Please fill all fields";
+return;
+}
+
+let existing=localStorage.getItem("userEmail");
+
+if(existing===email){
+document.getElementById("msg").innerText="Account already exists";
+return;
+}
+
 localStorage.setItem("userEmail",email);
 localStorage.setItem("userPass",pass);
 
-alert("Account created");
+document.getElementById("msg").innerText="Account created successfully";
 
+setTimeout(()=>{
 window.location="login.html";
+},1500);
 
 }
 
